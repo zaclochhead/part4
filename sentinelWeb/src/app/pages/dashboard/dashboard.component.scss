@@ -1,0 +1,212 @@
+@import '../../@theme/styles/themes';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/bootstrap/breakpoints';
+
+.nb-card-header{
+  font-family: nb-theme(font-secondary);
+  font-size: 1.2rem;
+  font-weight: nb-theme(font-weight-bold);
+}
+
+.dropdown {
+  width: 130px;
+  float:right;
+  margin-left:390px;
+}
+
+ngx-chartjs-pie{
+  .canvas{
+    height:97px;
+    width:97px;
+  }
+  float:right;
+/*   height: 355px; */
+  width: 94px;
+  height: 94px;
+}
+span{
+  cursor: pointer;  
+}
+.waterHistory{
+  height: 20rem;
+}
+.border{
+  border-style: solid;
+  border-color:#27CFC3;
+  font-style:bold;  
+  
+};
+
+.tankPercentage{
+  margin-left: 140px;
+  font-family: nb-theme(font-secondary);
+  font-size: 2rem;
+  font-weight: nb-theme(font-weight-bold);
+  color: black;
+}
+
+.litresUsed{
+  margin-left: 140px;
+  font-family: nb-theme(font-secondary);
+  font-size: 1.5rem;
+  font-weight: nb-theme(font-weight-bold);
+  color: black;
+}
+
+.waterLeft{
+  margin-left: 140px;
+  font-family: nb-theme(font-secondary);
+  font-size: 1.3rem;
+  margin-top:12px;
+  font-weight: nb-theme(font-weight-bold);
+  color: black;
+}
+
+.waterUsage{
+  text-align: center;  
+  font-size: 20px;
+  margin-top:12px;  
+  margin-left:400px;
+  font-style:bold;  
+}
+i{
+  border: solid #40dc7e;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.right {
+  transform: rotate(-45deg);
+  margin-left: 20px;  
+  -webkit-transform: rotate(-45deg);
+}
+
+.left {
+/*   margin-left: 350px;   */
+  transform: rotate(135deg);
+  margin-right: 20px;
+  -webkit-transform: rotate(135deg);
+}
+.dateHeading{
+  font-family: nb-theme(font-secondary);
+  font-size: 1rem;
+  font-weight: nb-theme(font-weight-bold);
+}
+
+.sameLine{
+  display: inline-block;
+  margin-left:auto;
+  margin-right:auto; 
+}
+@include nb-install-component() {
+  .solar-card nb-card-header {
+    border: none;
+    padding-bottom: 0;
+  }
+
+  @include media-breakpoint-down(sm) {
+    ngx-traffic {
+      display: none;
+    }
+  }
+
+  @include media-breakpoint-down(is) {
+    /deep/ nb-card.large-card {
+      height: nb-theme(card-height-medium);
+    }
+  }
+}
+
+.centerRow{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.stats-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: nb-theme(color-fg);
+  padding: 0 1.5rem;
+/*   border-right: 1px solid nb-theme(separator); */
+
+  .subtitle {
+    font-size: 0.9rem;
+    font-weight: nb-theme(font-weight-light);
+  }
+
+  .value {
+    font-family: nb-theme(font-secondary);
+    font-size: 1.3rem;
+    font-weight: nb-theme(font-weight-bold);
+    color: black;
+  }
+
+  .unit {
+    font-family: nb-theme(font-secondary);
+    font-size: 1.10rem;
+    font-weight: nb-theme(font-weight-light);
+  }
+}
+
+.header-stats {
+  display: flex;
+  align-items: center;
+}
+@include nb-install-component() {
+  ngx-chartjs-bar,
+  ngx-chartjs-line,
+  ngx-chartjs-multiple-xaxis,
+  ngx-chartjs-bar-horizontal,
+  ngx-chartjs-radar {
+    display: block;
+    height: 190px;
+    width: 780px;
+    margin-left:50px;
+    /deep/ chart {
+      display: block;
+      height: 200px;
+      width: 100%;
+    }
+  }
+
+  ngx-d3-bar,
+  ngx-d3-pie,
+  ngx-d3-advanced-pie,
+  ngx-d3-area-stack,
+  ngx-d3-line,
+  ngx-d3-polar {
+    display: block;
+    width: 300px;
+    height: 150px;/* nb-theme(card-height-extra-small); */
+
+    /deep/ {
+      .pie-label {
+        fill: nb-theme(color-fg-heading);
+      }
+
+      .grid-line-path {
+        stroke: nb-theme(separator);
+      }
+
+      text {
+        fill: nb-theme(color-fg-heading);
+      }
+
+      .chart-legend {
+        .legend-labels {
+          background: nb-theme(color-bg);
+        }
+        .legend-label {
+          color: nb-theme(color-fg-heading);
+          .active .legend-label-text {
+            color: nb-theme(color-fg-heading);
+          }
+        }
+      }
+    }
+  }
+}
+
