@@ -67272,7 +67272,7 @@ var ChartjsMultipleXaxisComponent = /** @class */ (function () {
                             display: true,
                             scaleLabel: {
                                 display: true,
-                                labelString: 'Litres',
+                                labelString: 'Decibels',
                             },
                             gridLines: {
                                 display: true,
@@ -67326,7 +67326,7 @@ var ChartjsMultipleXaxisComponent = /** @class */ (function () {
             _this.data = {
                 labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
                 datasets: [{
-                        label: 'Litres Used',
+                        label: 'Decibels',
                         data: _this.weeklyWaterLevels,
                         borderColor: "#40dc7e",
                         backgroundColor: "#40dc7e",
@@ -67370,7 +67370,7 @@ var ChartjsMultipleXaxisComponent = /** @class */ (function () {
             _this.data = {
                 labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
                 datasets: [{
-                        label: 'Litres Used',
+                        label: 'Decibels',
                         data: _this.yearlyWaterLevels,
                         borderColor: "#40dc7e",
                         backgroundColor: "#40dc7e",
@@ -67425,7 +67425,7 @@ var ChartjsMultipleXaxisComponent = /** @class */ (function () {
             _this.data = {
                 labels: ['1:00', '2:00', '3:00', '4:00', '5:00', '6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00', '00:00'],
                 datasets: [{
-                        label: 'Litres Used',
+                        label: 'dB Level',
                         data: _this.dailyWaterLevels,
                         borderColor: "#40dc7e",
                         backgroundColor: "#40dc7e",
@@ -67553,10 +67553,10 @@ var ChartjsPieComponent = /** @class */ (function () {
             var colors = config.variables;
             var chartjs = config.variables.chartjs;
             _this.data = {
-                labels: [],
+                labels: ["cars", "people", "trains"],
                 datasets: [{
-                        data: [100],
-                        backgroundColor: ['#27CFC3'],
+                        data: [30, 50, 20],
+                        backgroundColor: ['red', 'blue', 'green'],
                     }],
             };
             _this.options = {
@@ -67599,25 +67599,26 @@ var ChartjsPieComponent = /** @class */ (function () {
         });
     };
     ChartjsPieComponent.prototype.updateResults = function (waterLevel) {
-        var emptyData = 100 - waterLevel;
-        if (emptyData > 0) {
-            this.data = {
+        console.log("here");
+        /*     const emptyData = 100-waterLevel;
+            if(emptyData >0){
+              this.data = {
                 labels: [],
                 datasets: [{
-                        data: [waterLevel, emptyData],
-                        backgroundColor: ['#27CFC3', 'white'],
-                    }],
-            };
-        }
-        else {
-            this.data = {
+                  data: [waterLevel, emptyData ],
+                  backgroundColor: ['#27CFC3', 'white'],
+                }],
+              };
+            }
+            else{
+              this.data = {
                 labels: [],
                 datasets: [{
-                        data: [waterLevel],
-                        backgroundColor: ['#27CFC3'],
-                    }],
-            };
-        }
+                  data: [waterLevel],
+                  backgroundColor: ['#27CFC3'],
+                }],
+              };
+            } */
         this.waterUsage.emit(waterLevel);
     };
     ChartjsPieComponent.prototype.ngOnDestroy = function () {

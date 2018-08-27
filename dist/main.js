@@ -29,6 +29,7 @@ var map = {
 	],
 	"./maps/maps.module": [
 		"./src/app/pages/maps/maps.module.ts",
+		"app-pages-pages-module~maps-maps-module",
 		"common",
 		"maps-maps-module"
 	],
@@ -48,6 +49,7 @@ var map = {
 	"app/pages/pages.module": [
 		"./src/app/pages/pages.module.ts",
 		"app-pages-pages-module~charts-charts-module",
+		"app-pages-pages-module~maps-maps-module",
 		"common",
 		"app-pages-pages-module"
 	]
@@ -1200,7 +1202,7 @@ var FooterComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'ngx-footer',
             styles: [__webpack_require__(/*! ./footer.component.scss */ "./src/app/@theme/components/footer/footer.component.scss")],
-            template: "\n    <span class=\"created-by\">Sentinel Water 2018</span>\n    <div class=\"socials\">\n      <a href=\"#\" target=\"_blank\" class=\"ion ion-social-facebook\"></a>\n      <a href=\"#\" target=\"_blank\" class=\"ion ion-social-linkedin\"></a>\n    </div>\n  ",
+            template: "\n\n  ",
         })
     ], FooterComponent);
     return FooterComponent;
@@ -1217,7 +1219,7 @@ var FooterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header-container\"\n     [class.left]=\"position === 'normal'\"\n     [class.right]=\"position === 'inverse'\">\n  <div class=\"logo-containter\">\n    <img class = \"img\" alt=\"Sentinel\" src=\"http://sentinelwater.co/wp-content/uploads/2018/06/logo_new_2.png\">   \n  </div>\n</div>\n\n<span style=\"text-align: center; font-size:20px; margin-top:11px\">{{time}}</span>\n\n<nb-actions\n  size=\"medium\"\n  class=\"header-container\"\n  [class.right]=\"position === 'normal'\"\n  [class.left]=\"position === 'inverse'\">\n  <nb-action icon=\"nb-gear\" class=\"toggle-layout\" (click)=\"toggleSettings()\"></nb-action>\n\n  <nb-action *nbIsGranted=\"['view', 'user']\" >\n      <nb-user [nbContextMenu]=\"userMenu\" [name]=\" \" [picture]=\"user?.picture\"></nb-user>\n    </nb-action>\n\n  <nb-action class=\"control-item\" disabled icon=\"nb-notifications\"></nb-action>\n  <nb-action class=\"control-item\">\n    <nb-search type=\"rotate-layout\" (click)=\"startSearch()\"></nb-search>\n  </nb-action>\n</nb-actions>\n"
+module.exports = "<div class=\"header-container\"\n     [class.left]=\"position === 'normal'\"\n     [class.right]=\"position === 'inverse'\">\n</div>\n\n<span style=\"margin-right: 46%; font-size:20px; margin-top:11px\">{{time}}</span>\n\n<!-- <nb-actions\n  size=\"medium\"\n  class=\"header-container\"\n  [class.right]=\"position === 'normal'\"\n  [class.left]=\"position === 'inverse'\">\n  <nb-action icon=\"nb-gear\" class=\"toggle-layout\" (click)=\"toggleSettings()\"></nb-action>\n\n  <nb-action *nbIsGranted=\"['view', 'user']\" >\n      <nb-user [nbContextMenu]=\"userMenu\" [name]=\" \" [picture]=\"user?.picture\"></nb-user>\n    </nb-action>\n\n  <nb-action class=\"control-item\" disabled icon=\"nb-notifications\"></nb-action>\n  <nb-action class=\"control-item\">\n    <nb-search type=\"rotate-layout\" (click)=\"startSearch()\"></nb-search>\n  </nb-action>\n</nb-actions> -->\n"
 
 /***/ }),
 
@@ -2003,7 +2005,7 @@ var SampleLayoutComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'ngx-sample-layout',
             styles: [__webpack_require__(/*! ./sample.layout.scss */ "./src/app/@theme/layouts/sample/sample.layout.scss")],
-            template: "\n    <nb-layout [center]=\"layout.id === 'center-column'\" windowMode>\n      <nb-layout-header fixed>\n        <ngx-header [position]=\"sidebar.id === 'start' ? 'normal': 'inverse'\"></ngx-header>\n      </nb-layout-header>\n\n      <nb-sidebar class=\"menu-sidebar\"\n      tag=\"menu-sidebar\"\n      responsive\n      [end]=\"sidebar.id === 'end'\">\n      <nb-sidebar-header *ngIf=\"currentTheme !== 'corporate'\">\n      \n      </nb-sidebar-header>\n      <ng-content select=\"nb-menu\"></ng-content>\n      </nb-sidebar>\n\n\n      <nb-layout-column class=\"main-content\">\n        <ng-content select=\"router-outlet\"></ng-content>\n      </nb-layout-column>\n\n      <nb-layout-column start class=\"small\" *ngIf=\"layout.id === 'two-column' || layout.id === 'three-column'\">\n        <nb-menu [items]=\"subMenu\"></nb-menu>\n      </nb-layout-column>\n\n      <nb-layout-column class=\"small\" *ngIf=\"layout.id === 'three-column'\">\n        <nb-menu [items]=\"subMenu\"></nb-menu>\n      </nb-layout-column>\n\n      <nb-layout-footer fixed>\n        <ngx-footer></ngx-footer>\n      </nb-layout-footer>\n\n      <nb-sidebar class=\"settings-sidebar\"\n                   tag=\"settings-sidebar\"\n                   state=\"collapsed\"\n                   fixed\n                   [end]=\"sidebar.id !== 'end'\">\n        <ngx-theme-settings></ngx-theme-settings>\n      </nb-sidebar>\n    </nb-layout>\n  ",
+            template: "\n    <nb-layout [center]=\"layout.id === 'center-column'\" windowMode>\n      <nb-layout-header fixed>\n        <ngx-header [position]=\"sidebar.id === 'start' ? 'normal': 'inverse'\"></ngx-header>\n      </nb-layout-header>\n\n      <nb-sidebar class=\"menu-sidebar\"\n      tag=\"menu-sidebar\"\n      responsive\n      [end]=\"sidebar.id === 'end'\">\n      <nb-sidebar-header *ngIf=\"currentTheme !== 'corporate'\">\n      \n      </nb-sidebar-header>\n      <ng-content select=\"nb-menu\"></ng-content>\n      </nb-sidebar>\n\n\n      <nb-layout-column class=\"main-content\">\n        <ng-content select=\"router-outlet\"></ng-content>\n      </nb-layout-column>\n\n      <nb-layout-column start class=\"small\" *ngIf=\"layout.id === 'two-column' || layout.id === 'three-column'\">\n        <nb-menu [items]=\"subMenu\"></nb-menu>\n      </nb-layout-column>\n\n      <nb-layout-column class=\"small\" *ngIf=\"layout.id === 'three-column'\">\n        <nb-menu [items]=\"subMenu\"></nb-menu>\n      </nb-layout-column>\n\n/*       <nb-layout-footer fixed>\n        <ngx-footer></ngx-footer>\n      </nb-layout-footer> */\n\n      <nb-sidebar class=\"settings-sidebar\"\n                   tag=\"settings-sidebar\"\n                   state=\"collapsed\"\n                   fixed\n                   [end]=\"sidebar.id !== 'end'\">\n        <ngx-theme-settings></ngx-theme-settings>\n      </nb-sidebar>\n    </nb-layout>\n  ",
         }),
         __metadata("design:paramtypes", [_core_data_state_service__WEBPACK_IMPORTED_MODULE_3__["StateService"],
             _nebular_theme__WEBPACK_IMPORTED_MODULE_2__["NbMenuService"],
@@ -2802,7 +2804,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-var SERVER_URL = 'https://sentinelbeta.azurewebsites.net';
+var SERVER_URL = 'localhost:1337'; //'https://sentinelbeta.azurewebsites.net';
 var PostsService = /** @class */ (function () {
     function PostsService(http) {
         this.http = http;
@@ -2870,6 +2872,10 @@ var PostsService = /** @class */ (function () {
         return this.http.get('/api/getWeek', { params: { week: week, dateID: this.getDateID(), daysUntilSunday: this.getDaysUntilSunday() } })
             .map(function (res) { return res.json(); });
     };
+    PostsService.prototype.sendEmail = function () {
+        return this.http.get('/api/emailer')
+            .map(function (res) { return res.json(); });
+    };
     PostsService.prototype.getYear = function (month) {
         return this.http.get('/api/getYear', { params: { month: month } })
             .map(function (res) { return res.json(); });
@@ -2888,6 +2894,10 @@ var PostsService = /** @class */ (function () {
     };
     PostsService.prototype.getCurrentDay = function () {
         return this.http.get('/api/getCurrentDay', { params: { timeID: this.getTimeID(), timeFormat: this.getTimeFormat() } })
+            .map(function (res) { return res.json(); });
+    };
+    PostsService.prototype.getWeather = function () {
+        return this.http.get('/api/weather')
             .map(function (res) { return res.json(); });
     };
     PostsService.prototype.getTimeID = function () {
@@ -3090,7 +3100,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Zac\Desktop\2018courses\sentinel\Sentinel\WebApplication\sentinelWeb\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Zac\Desktop\2018courses\Part 4\app\src\main.ts */"./src/main.ts");
 
 
 /***/ }),
