@@ -11,6 +11,11 @@ router.get('/', function (req, res) {
         
     dateID = req.query.dateID;
     timeID = req.query.timeID;
+    source = req.query.source; 
+
+    if(source == null){
+        source = "Ambient Noise";
+    }
 
     if(dateID == null && timeID == null){
         currentTime = new Date().getTime()/1000; 
@@ -32,9 +37,10 @@ router.get('/', function (req, res) {
     
     level = req.query.level;
     io.emit('level', JSON.parse('{"level": ' + level + '}')); 
-
+    io.emit('source', JSON.parse('{"source": ' + '"' + source +'"' + '}')); 
+    
     // query to the database and get the records
-    request.query(`INSERT into test (level, dateID, ID, timeID) values (`+level+`,'`+ dateID + `',` + currentTime + `,'`+timeID+`')`, function (err, recordset) {
+    request.query(`INSERT into test (level, dateID, ID, timeID, source) values (`+level+`,'`+ dateID + `',` + currentTime + `,'`+timeID+ `','` + source + `')`, function (err, recordset) {
         //I added these 2 lines
         if (err) res.send(err);
         // sql.close();

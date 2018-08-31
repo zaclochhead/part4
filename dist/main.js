@@ -2827,6 +2827,12 @@ var PostsService = /** @class */ (function () {
             _this.socket.on('level', function (data) { return observer.next(data); });
         });
     };
+    PostsService.prototype.onSource = function () {
+        var _this = this;
+        return new rxjs_Observable__WEBPACK_IMPORTED_MODULE_4__["Observable"](function (observer) {
+            _this.socket.on('source', function (data) { return observer.next(data); });
+        });
+    };
     PostsService.prototype.onEvent = function (event) {
         var _this = this;
         return new rxjs_Observable__WEBPACK_IMPORTED_MODULE_4__["Observable"](function (observer) {
@@ -2864,8 +2870,8 @@ var PostsService = /** @class */ (function () {
         return this.http.get('/api/get')
             .map(function (res) { return res.json(); });
     };
-    PostsService.prototype.storeData = function (level) {
-        return this.http.get('/api/store', { params: { level: level, timeID: this.getTimeID(), dateID: this.getDateID() } })
+    PostsService.prototype.storeData = function (level, source) {
+        return this.http.get('/api/store', { params: { level: level, timeID: this.getTimeID(), dateID: this.getDateID(), source: source } })
             .map(function (res) { return res.json(); });
     };
     PostsService.prototype.getWeek = function (week) {

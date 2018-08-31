@@ -67549,6 +67549,7 @@ var ChartjsPieComponent = /** @class */ (function () {
         this.theme = theme;
         this.postsService = postsService;
         this.waterUsage = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.source = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.themeSubscription = this.theme.getJsTheme().subscribe(function (config) {
             var colors = config.variables;
             var chartjs = config.variables.chartjs;
@@ -67591,6 +67592,11 @@ var ChartjsPieComponent = /** @class */ (function () {
             var waterLevel = message.level;
             _this.updateResults(waterLevel);
         });
+        this.ioConnection = this.postsService.onSource()
+            .subscribe(function (message) {
+            var source = message.source;
+            _this.updateSource(source);
+        });
         this.postsService.onEvent(_app_event__WEBPACK_IMPORTED_MODULE_3__["Event"].CONNECT)
             .subscribe(function () {
         });
@@ -67621,6 +67627,9 @@ var ChartjsPieComponent = /** @class */ (function () {
             } */
         this.waterUsage.emit(waterLevel);
     };
+    ChartjsPieComponent.prototype.updateSource = function (source) {
+        this.source.emit(source);
+    };
     ChartjsPieComponent.prototype.ngOnDestroy = function () {
         this.themeSubscription.unsubscribe();
     };
@@ -67628,6 +67637,10 @@ var ChartjsPieComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
         __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
     ], ChartjsPieComponent.prototype, "waterUsage", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
+    ], ChartjsPieComponent.prototype, "source", void 0);
     ChartjsPieComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'ngx-chartjs-pie',
