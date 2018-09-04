@@ -3336,6 +3336,7 @@ module.exports = "/**\n * @license\n * Copyright Akveo. All Rights Reserved.\n *
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GmapsComponent", function() { return GmapsComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _app_posts_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../../app/posts.service */ "./src/app/posts.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3393,10 +3394,16 @@ export class GmapsComponent {
 }
  */
 
+
 var GmapsComponent = /** @class */ (function () {
-    function GmapsComponent() {
-        this.latitude = -36.8788518;
-        this.longitude = 174.7466372;
+    function GmapsComponent(postsService) {
+        var _this = this;
+        this.postsService = postsService;
+        this.latitude = -36.866700;
+        this.longitude = 174.773672;
+        this.postsService.listen().subscribe(function (m) {
+            _this.onFilterClick(m);
+        });
     }
     GmapsComponent.prototype.ngOnInit = function () {
         var mapProp = {
@@ -3407,26 +3414,27 @@ var GmapsComponent = /** @class */ (function () {
         this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
         var nodes = {
             node1: {
-                center: { lat: -36.86854418, lng: 174.76427704 }
+                center: { lat: -36.879219, lng: 174.748328 }
             },
             node2: {
-                center: { lat: -36.86610651, lng: 174.7707358 }
+                center: { lat: -36.866700, lng: 174.773672 }
             },
             node3: {
-                center: { lat: -36.86410653, lng: 174.76769954 }
+                center: { lat: -36.852027, lng: 174.770322 }
             },
             node4: {
-                center: { lat: -36.8698367, lng: 174.77758010000002 }
+                center: { lat: -36.883684, lng: 174.784980 }
             }
         };
         for (var node in nodes) {
             // Add the circle for this city to the map.
+            // MT EDEN
             if (node == "node1") {
                 var cityCircle = new google.maps.Circle({
-                    strokeColor: "rgb(255,165,0)",
+                    strokeColor: "rgb(255,255,0)",
                     strokeOpacity: 0.8,
                     strokeWeight: 2,
-                    fillColor: "rgb(255,165,0)",
+                    fillColor: "rgb(255,255,0)",
                     fillOpacity: 0.35,
                     map: this.map,
                     center: nodes[node].center,
@@ -3435,29 +3443,17 @@ var GmapsComponent = /** @class */ (function () {
             }
             else if (node == "node2") {
                 var cityCircle = new google.maps.Circle({
-                    strokeColor: "rgb(255,255,0)",
+                    strokeColor: "rgb(255,165,0)",
                     strokeOpacity: 0.8,
                     strokeWeight: 2,
-                    fillColor: 'rgb(255,255,0)',
+                    fillColor: 'rgb(255,165,0)',
                     fillOpacity: 0.35,
                     map: this.map,
                     center: nodes[node].center,
-                    radius: 200
+                    radius: 250
                 });
             }
             else if (node == "node3") {
-                var cityCircle = new google.maps.Circle({
-                    strokeColor: "rgb(0,255,0)",
-                    strokeOpacity: 0.8,
-                    strokeWeight: 2,
-                    fillColor: "rgb(0,255,0)",
-                    fillOpacity: 0.35,
-                    map: this.map,
-                    center: nodes[node].center,
-                    radius: 120
-                });
-            }
-            else if (node == "node4") {
                 var cityCircle = new google.maps.Circle({
                     strokeColor: "rgb(255,0,0)",
                     strokeOpacity: 0.8,
@@ -3466,7 +3462,19 @@ var GmapsComponent = /** @class */ (function () {
                     fillOpacity: 0.35,
                     map: this.map,
                     center: nodes[node].center,
-                    radius: 150
+                    radius: 250
+                });
+            }
+            else if (node == "node4") {
+                var cityCircle = new google.maps.Circle({
+                    strokeColor: "rgb(100,255,0)",
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: "rgb(100,255,0)",
+                    fillOpacity: 0.35,
+                    map: this.map,
+                    center: nodes[node].center,
+                    radius: 250
                 });
             }
         }
@@ -3478,6 +3486,20 @@ var GmapsComponent = /** @class */ (function () {
         e.preventDefault();
         this.map.setCenter(new google.maps.LatLng(this.latitude, this.longitude));
     };
+    GmapsComponent.prototype.onFilterClick = function (event) {
+        if (event == 'Epsom') {
+            this.map.setCenter(new google.maps.LatLng(-36.883684, 174.784980));
+        }
+        else if (event == 'Mt Eden') {
+            this.map.setCenter(new google.maps.LatLng(-36.879219, 174.748328));
+        }
+        else if (event == 'New Market') {
+            this.map.setCenter(new google.maps.LatLng(-36.866700, 174.773672));
+        }
+        else if (event == 'CBD') {
+            this.map.setCenter(new google.maps.LatLng(-36.852027, 174.770322));
+        }
+    };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('gmap'),
         __metadata("design:type", Object)
@@ -3487,7 +3509,8 @@ var GmapsComponent = /** @class */ (function () {
             selector: 'ngx-gmaps',
             template: __webpack_require__(/*! ./gmaps.component.html */ "./src/app/pages/maps/gmaps/gmaps.component.html"),
             styles: [__webpack_require__(/*! ./gmaps.component.scss */ "./src/app/pages/maps/gmaps/gmaps.component.scss")]
-        })
+        }),
+        __metadata("design:paramtypes", [_app_posts_service__WEBPACK_IMPORTED_MODULE_1__["PostsService"]])
     ], GmapsComponent);
     return GmapsComponent;
 }());

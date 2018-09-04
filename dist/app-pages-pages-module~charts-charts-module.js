@@ -67554,9 +67554,9 @@ var ChartjsPieComponent = /** @class */ (function () {
             var colors = config.variables;
             var chartjs = config.variables.chartjs;
             _this.data = {
-                labels: ["cars", "people", "trains"],
+                labels: ["Cars", "Rain", "Ambient"],
                 datasets: [{
-                        data: [30, 50, 20],
+                        data: [22, 8, 70],
                         backgroundColor: ['red', 'blue', 'green'],
                     }],
             };
@@ -67583,6 +67583,9 @@ var ChartjsPieComponent = /** @class */ (function () {
             };
         });
         this.initIoConnection();
+        this.postsService.listen().subscribe(function (m) {
+            _this.onFilterClick(m);
+        });
     }
     ChartjsPieComponent.prototype.initIoConnection = function () {
         var _this = this;
@@ -67632,6 +67635,44 @@ var ChartjsPieComponent = /** @class */ (function () {
     };
     ChartjsPieComponent.prototype.ngOnDestroy = function () {
         this.themeSubscription.unsubscribe();
+    };
+    ChartjsPieComponent.prototype.onFilterClick = function (event) {
+        if (event == 'Epsom') {
+            this.data = {
+                labels: ["Cars", "Rain", "Ambient"],
+                datasets: [{
+                        data: [40, 16, 44],
+                        backgroundColor: ['red', 'blue', 'green'],
+                    }],
+            };
+        }
+        else if (event == 'Mt Eden') {
+            this.data = {
+                labels: ["Cars", "Rain", "Ambient"],
+                datasets: [{
+                        data: [12, 14, 74],
+                        backgroundColor: ['red', 'blue', 'green'],
+                    }],
+            };
+        }
+        else if (event == 'New Market') {
+            this.data = {
+                labels: ["Cars", "Rain", "Ambient"],
+                datasets: [{
+                        data: [22, 8, 70],
+                        backgroundColor: ['red', 'blue', 'green'],
+                    }],
+            };
+        }
+        else if (event == 'CBD') {
+            this.data = {
+                labels: ["Cars", "Rain", "Ambient"],
+                datasets: [{
+                        data: [62, 16, 22],
+                        backgroundColor: ['red', 'blue', 'green'],
+                    }],
+            };
+        }
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
