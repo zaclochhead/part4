@@ -67286,6 +67286,18 @@ var ChartjsMultipleXaxisComponent = /** @class */ (function () {
                 },
             };
         });
+        this.data = {
+            labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+            datasets: [{
+                    label: 'Decibels',
+                    data: [57, 62, 65, 67, 62, 53, 68],
+                    borderColor: "#40dc7e",
+                    backgroundColor: "#40dc7e",
+                    fill: false,
+                    pointRadius: 8,
+                    pointHoverRadius: 10,
+                }],
+        };
     }
     ChartjsMultipleXaxisComponent.prototype.initIoConnection = function () {
         var _this = this;
